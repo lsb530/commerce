@@ -1,0 +1,21 @@
+version: "3"
+services:
+  commerce_database:
+    image: mysql
+    platform: linux/x86_64
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootroot
+      MYSQL_DATABASE: commerce
+      MYSQL_CONTAINER_NAME: commerce_database
+      TZ: Asia/Seoul
+  application:
+    build: .
+#    restart: on-failure
+    ports:
+      - "8080:8080"
+    links:
+      - commerce_database
+    depends_on:
+      - commerce_database

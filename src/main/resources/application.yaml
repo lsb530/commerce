@@ -1,0 +1,29 @@
+server:
+  servlet:
+    session:
+      timeout: 30m
+      tracking-modes: cookie
+      cookie:
+        http-only: true
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/commerce?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+#    url: jdbc:mysql://commerce_database:3306/commerce?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: rootroot
+  jpa:
+    hibernate:
+#      ddl-auto: create
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+    show-sql: true
+    generate-ddl: true
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+#  sql:
+#    init:
+#      mode: always
